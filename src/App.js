@@ -1,25 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import List from './components/List.js';
+import Form from './components/Form.js';
+
+
+function addItem() {
+    
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App flex justify-center items-center h-screen w-screen">
+            <div className='max-w-5xl h-screen bg-white flex flex-col justify-center items-center'>
+                    <Form />
+                <div className='flex flex-1 flex-col justify-center items-center'>
+                    <List />   
+                </div>
+            </div>
+        </div>
+    );
 }
+
 
 export default App;

@@ -17,7 +17,7 @@ const GroceryList = [
         title: "Chicken Breast",
         quantity: 1,
 
-        status: false,
+        status: true,
     },
     {
         id: 4,
@@ -31,7 +31,7 @@ const GroceryList = [
         title: "San Mig Light",
         quantity: 1,
 
-        status: false,
+        status: true,
     },
 
 ];

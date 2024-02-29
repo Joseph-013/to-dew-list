@@ -1,15 +1,20 @@
 import { useState } from "react";
-import { GroceryList } from "./GroceryList";
 
-function Form() {
+function Form({ onAddItem }) {
     const [name, setName] = useState("");
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
+
 
     function handleSubmit(e) {
         e.preventDefault();
         if (!name) return;
         const newItem = { name, quantity, isChecked: false, id: Date.now() };
         console.log(newItem);
+
+        //Reset Fields
+        setName("");
+        setQuantity(1);
+        onAddItem(newItem);
     }
 
     return (
@@ -33,6 +38,7 @@ function Form() {
                         className='rounded-md border border-black h-10 w-80 p-3 font-jetbrains-mono'
                         type="text"
                         name='item'
+                        maxLength={25}
                         onChange={e => setName(e.target.value)}
                     />
                 </div>

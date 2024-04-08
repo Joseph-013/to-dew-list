@@ -22,7 +22,7 @@ function List(props) {
     }
 
     return (
-        <ul className="w-full h-full space-y-4 mt-4">
+        <ul className="w-full h-full space-y-4 mt-4 px-4">
             {props.items.map(function (item) {
                 return (
                     <li key={item.id} className={`h-12 flex justify-between items-center w-full font-jetbrains-mono px-4 rounded-full ${item.status === false ? randomColor() : 'bg-slate-300'} `}>

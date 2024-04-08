@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { quotes } from "./quotes.js";
 
-function Form({ onAddItem }) {
+
+function Form({ onAddItem, onClearLists }) {
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState(1);
 
@@ -8,13 +10,27 @@ function Form({ onAddItem }) {
     function handleSubmit(e) {
         e.preventDefault();
         if (!name) return;
-        const newItem = { name, quantity, isChecked: false, id: Date.now() };
-        console.log(newItem);
+        const newItem = { name, quantity, status: false, id: Date.now() };
 
         //Reset Fields
         setName("");
         setQuantity(1);
         onAddItem(newItem);
+    }
+
+    function handleClearLists() {
+        const response = window.confirm('Clear all lists?');
+        if (response) {
+            onClearLists();
+        }
+    }
+
+
+
+    function getRandomQuote() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        const randomQuote = quotes[randomIndex];
+        return randomQuote;
     }
 
     return (
@@ -43,9 +59,14 @@ function Form({ onAddItem }) {
                     />
                 </div>
             </div>
-            <div className='mt-3'>
-                <button type="submit" className='font-jetbrains-mono border border-black rounded-md px-4 py-1'>Add</button>
+            <div className='mt-3 flex flex-row justify-center'>
+                <button type="submit" className='font-jetbrains-mono rounded-md px-4 py-1 bg-sky-500 text-white'>Add</button>
+                <div className="w-3"></div>
+                <button onClick={handleClearLists} className='font-jetbrains-mono bg-red-500 text-white rounded-md px-4 py-1'>Clear</button>
             </div>
+
+            <div className="mt-4 mx-6 italic text-sm text-slate-500">{getRandomQuote().quote}<br />- {getRandomQuote().author}</div>
+            {/* <div className="mt-2 italic text-sm"></div> */}
         </form>
     )
 }
